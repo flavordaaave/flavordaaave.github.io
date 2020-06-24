@@ -1,10 +1,13 @@
+import { NextPage } from 'next'
+import React from 'react'
 import styled from 'styled-components'
 
-const Title = styled.h1`
-  color: red;
-  font-size: 50px;
+const Wrapper = styled.div`
+  width: 100%;
 `
 
-export default function Home() {
-  return <Title>My page</Title>
+const Home: NextPage = () => {
+  return <Wrapper>Coming soon...</Wrapper>
 }
+
+export default Home
