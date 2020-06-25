@@ -4,7 +4,8 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: fill-available;
   background: rgb(255, 156, 137);
   background: linear-gradient(
     176deg,
