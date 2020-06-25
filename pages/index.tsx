@@ -2,19 +2,43 @@ import { NextPage } from 'next'
 import React from 'react'
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
+interface WrapperProps {
+  activePage: number
+}
+
+const Wrapper = styled.div<WrapperProps>`
   width: 100%;
   min-height: 100vh;
   min-height: fill-available;
-  background: rgb(255, 156, 137);
-  background: linear-gradient(
-    176deg,
-    rgba(255, 156, 137, 1) 0%,
-    rgba(255, 120, 132, 1) 84%
-  );
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(
+    -45deg,
+    #de6262,
+    #ffb88c,
+    #ffd194,
+    #70e1f5,
+    #00c6ff,
+    #0072ff
+  );
+  background-size: 400% 400%;
+  background-position: ${({ activePage }) => {
+    switch (activePage) {
+      case 0:
+        return '0% 0%'
+      case 1:
+        return '33% 33%'
+      case 2:
+        return '66% 66%'
+      case 3:
+        return '100% 100%'
+      default:
+        return '0% 0%'
+    }
+  }};
+  transition: background-position 0.75s ease-out;
 `
 
 const Headline = styled.h1`
@@ -23,9 +47,18 @@ const Headline = styled.h1`
 `
 
 const Home: NextPage = () => {
+  const [activePage, setActivePage] = React.useState<number>(1)
+
   return (
-    <Wrapper>
+    <Wrapper activePage={activePage}>
       <Headline>Coming soon...</Headline>
+      <div>
+        {[...Array(4).keys()].map((n) => (
+          <button key={n} onClick={() => setActivePage(n)}>{`Page ${
+            n + 1
+          }`}</button>
+        ))}
+      </div>
     </Wrapper>
   )
 }
