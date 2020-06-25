@@ -46,6 +46,10 @@ const Headline = styled.h1`
   font-size: 2em;
 `
 
+const Button = styled.button`
+  margin: 0 4px;
+`
+
 const Home: NextPage = () => {
   const [activePage, setActivePage] = React.useState<number>(1)
 
@@ -54,9 +58,9 @@ const Home: NextPage = () => {
       <Headline>Coming soon...</Headline>
       <div>
         {[...Array(4).keys()].map((n) => (
-          <button key={n} onClick={() => setActivePage(n)}>{`Page ${
+          <Button key={n} onClick={() => setActivePage(n)}>{`Page ${
             n + 1
-          }`}</button>
+          }`}</Button>
         ))}
       </div>
     </Wrapper>
