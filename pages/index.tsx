@@ -2,68 +2,35 @@ import { NextPage } from 'next'
 import React from 'react'
 import styled from 'styled-components'
 
-interface WrapperProps {
-  activePage: number
-}
+import { GradientBackground, NavButton, Page } from '../components'
 
-const Wrapper = styled.div<WrapperProps>`
-  width: 100%;
-  min-height: 100vh;
-  min-height: fill-available;
+const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 150px auto 50px auto;
+  width: 100%;
+  max-width: 900px;
   align-items: center;
-  background: linear-gradient(
-    -45deg,
-    #de6262,
-    #ffb88c,
-    #ffd194,
-    #70e1f5,
-    #00c6ff,
-    #0072ff
-  );
-  background-size: 400% 400%;
-  background-position: ${({ activePage }) => {
-    switch (activePage) {
-      case 0:
-        return '0% 0%'
-      case 1:
-        return '33% 33%'
-      case 2:
-        return '66% 66%'
-      case 3:
-        return '100% 100%'
-      default:
-        return '0% 0%'
-    }
-  }};
-  transition: background-position 0.75s ease-out;
-`
-
-const Headline = styled.h1`
-  color: rgba(255, 255, 255);
-  font-size: 2em;
-`
-
-const Button = styled.button`
-  margin: 0 4px;
 `
 
 const Home: NextPage = () => {
-  const [activePage, setActivePage] = React.useState<number>(1)
+  const [activePage, setActivePage] = React.useState<0 | 1 | 2 | 3>(0)
 
   return (
-    <Wrapper activePage={activePage}>
-      <Headline>Coming soon...</Headline>
-      <div>
-        {[...Array(4).keys()].map((n) => (
-          <Button key={n} onClick={() => setActivePage(n)}>{`Page ${
-            n + 1
-          }`}</Button>
-        ))}
-      </div>
-    </Wrapper>
+    <Page>
+      <GradientBackground variation={activePage}>
+        <Wrapper>
+          {[...Array(4).keys()].map((n) => (
+            <NavButton
+              isActive={n === activePage}
+              key={n}
+              onClick={() => setActivePage(n as 0 | 1 | 2 | 3)}
+            />
+          ))}
+        </Wrapper>
+      </GradientBackground>
+    </Page>
   )
 }
 
