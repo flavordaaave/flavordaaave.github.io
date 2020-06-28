@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 interface NavButtonProps {
+  activeColor: string
   isActive: boolean
   onClick: () => void
 }
@@ -13,11 +14,12 @@ const TRANSFORM_DEFAULT = 'translate(0)'
 const TRANSFORM_ACTIVE = 'translateY(-4px)'
 
 export const NavButton = styled.div<NavButtonProps>`
-  width: 140px;
-  height: 140px;
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  margin: 14px;
   border-radius: 6px;
-  background-color: white;
-  margin: 10px;
+  background-color: ${({ activeColor, isActive }) =>
+    (isActive && activeColor) || '#ffffff'};
   cursor: pointer;
   box-shadow: ${({ isActive }) =>
     (isActive && SHADOW_ACTIVE) || SHADOW_DEFAULT};
