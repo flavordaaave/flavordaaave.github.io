@@ -15,7 +15,7 @@ const Header = styled.div`
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 60px auto 20px auto;
+  margin: 60px auto 60px auto;
   width: 100%;
   max-width: 600px;
   align-items: center;
@@ -26,6 +26,17 @@ const ButtonWrapper = styled(AspectRatioBox)`
   ${mediaQueries(4)`
     width: 25%;
   `};
+`
+
+const Content = styled.div`
+  width: calc(100% - 28px);
+  background-color: #ffffff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 6px;
+  margin: 0 auto;
+  max-width: 800px;
+  transform: translateY(-40px);
+  padding: 14px;
 `
 
 const Home: NextPage = () => {
@@ -41,11 +52,27 @@ const Home: NextPage = () => {
                 activeColor={getActiveColorForPage(n)}
                 isActive={n === activePage}
                 onClick={() => setActivePage(n as 0 | 1 | 2 | 3)}
-              />
+              >
+                Page {n + 1}
+              </NavButton>
             </ButtonWrapper>
           ))}
         </Header>
       </GradientBackground>
+      <Content>
+        <p>Page {activePage + 1} content...</p>
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+          ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+          sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+          et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+          takimata sanctus est Lorem ipsum dolor sit amet.
+        </p>
+      </Content>
     </Page>
   )
 

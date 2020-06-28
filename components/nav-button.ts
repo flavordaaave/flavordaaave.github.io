@@ -14,10 +14,15 @@ const TRANSFORM_DEFAULT = 'translate(0)'
 const TRANSFORM_ACTIVE = 'translateY(-4px)'
 
 export const NavButton = styled.div<NavButtonProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: calc(100% - 28px);
   height: calc(100% - 28px);
   margin: 14px;
   border-radius: 6px;
+  font-weight: 700;
+  color: ${({ isActive }) => (isActive && '#ffffff') || '#000000'};
   background-color: ${({ activeColor, isActive }) =>
     (isActive && activeColor) || '#ffffff'};
   cursor: pointer;
