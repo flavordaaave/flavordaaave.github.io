@@ -2,9 +2,9 @@ name: CI
 on:
   push:
     branches:
-      - **
-      - !master
-      - !source
+      - '**'
+      - '!master'
+      - '!source'
 jobs:
   lint:
     runs-on: ubuntu-latest

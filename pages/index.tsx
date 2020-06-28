@@ -2,69 +2,94 @@ import { NextPage } from 'next'
 import React from 'react'
 import styled from 'styled-components'
 
-interface WrapperProps {
-  activePage: number
-}
+import {
+  AspectRatioBox,
+  GradientBackground,
+  NavButton,
+  Page,
+} from '../components'
+import { mediaQueries } from '../styles/media-queries'
 
-const Wrapper = styled.div<WrapperProps>`
-  width: 100%;
-  min-height: 100vh;
-  min-height: fill-available;
+const Header = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
+  margin: 60px auto 60px auto;
+  width: 100%;
+  max-width: 600px;
   align-items: center;
-  background: linear-gradient(
-    -45deg,
-    #de6262,
-    #ffb88c,
-    #ffd194,
-    #70e1f5,
-    #00c6ff,
-    #0072ff
-  );
-  background-size: 400% 400%;
-  background-position: ${({ activePage }) => {
-    switch (activePage) {
-      case 0:
-        return '0% 0%'
-      case 1:
-        return '33% 33%'
-      case 2:
-        return '66% 66%'
-      case 3:
-        return '100% 100%'
-      default:
-        return '0% 0%'
-    }
-  }};
-  transition: background-position 0.75s ease-out;
 `
 
-const Headline = styled.h1`
-  color: rgba(255, 255, 255);
-  font-size: 2em;
+const ButtonWrapper = styled(AspectRatioBox)`
+  width: 50%;
+  ${mediaQueries(4)`
+    width: 25%;
+  `};
 `
 
-const Button = styled.button`
-  margin: 0 4px;
+const Content = styled.div`
+  width: calc(100% - 28px);
+  background-color: #ffffff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 6px;
+  margin: 0 auto;
+  max-width: 800px;
+  transform: translateY(-40px);
+  padding: 14px;
 `
 
 const Home: NextPage = () => {
-  const [activePage, setActivePage] = React.useState<number>(1)
+  const [activePage, setActivePage] = React.useState<0 | 1 | 2 | 3>(0)
 
   return (
-    <Wrapper activePage={activePage}>
-      <Headline>Coming soon...</Headline>
-      <div>
-        {[...Array(4).keys()].map((n) => (
-          <Button key={n} onClick={() => setActivePage(n)}>{`Page ${
-            n + 1
-          }`}</Button>
-        ))}
-      </div>
-    </Wrapper>
+    <Page>
+      <GradientBackground variation={activePage}>
+        <Header>
+          {[...Array(4).keys()].map((n) => (
+            <ButtonWrapper key={n} ratio={1}>
+              <NavButton
+                activeColor={getActiveColorForPage(n)}
+                isActive={n === activePage}
+                onClick={() => setActivePage(n as 0 | 1 | 2 | 3)}
+              >
+                Page {n + 1}
+              </NavButton>
+            </ButtonWrapper>
+          ))}
+        </Header>
+      </GradientBackground>
+      <Content>
+        <p>Page {activePage + 1} content...</p>
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+          ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+          sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+          et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+          takimata sanctus est Lorem ipsum dolor sit amet.
+        </p>
+      </Content>
+    </Page>
   )
+
+  function getActiveColorForPage(page: number): string {
+    switch (page) {
+      case 0:
+        return '#0097FF'
+      case 1:
+        return '#70e1f5'
+      case 2:
+        return '#F7D19A'
+      case 3:
+        return '#EF8F78'
+      default:
+        return '#ffffff'
+    }
+  }
 }
 
 export default Home
