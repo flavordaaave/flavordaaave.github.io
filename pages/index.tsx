@@ -2,16 +2,30 @@ import { NextPage } from 'next'
 import React from 'react'
 import styled from 'styled-components'
 
-import { GradientBackground, NavButton, Page } from '../components'
+import {
+  AspectRatioBox,
+  GradientBackground,
+  NavButton,
+  Page,
+} from '../components'
+import { mediaQueries } from '../styles/media-queries'
 
-const Wrapper = styled.div`
+const Header = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin: 150px auto 50px auto;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 60px auto 20px auto;
   width: 100%;
-  max-width: 900px;
+  max-width: 600px;
   align-items: center;
+`
+
+const ButtonWrapper = styled(AspectRatioBox)`
+  width: 50%;
+  ${mediaQueries(4)`
+    width: 25%;
+  `};
 `
 
 const Home: NextPage = () => {
@@ -20,18 +34,35 @@ const Home: NextPage = () => {
   return (
     <Page>
       <GradientBackground variation={activePage}>
-        <Wrapper>
+        <Header>
           {[...Array(4).keys()].map((n) => (
-            <NavButton
-              isActive={n === activePage}
-              key={n}
-              onClick={() => setActivePage(n as 0 | 1 | 2 | 3)}
-            />
+            <ButtonWrapper key={n} ratio={1}>
+              <NavButton
+                activeColor={getActiveColorForPage(n)}
+                isActive={n === activePage}
+                onClick={() => setActivePage(n as 0 | 1 | 2 | 3)}
+              />
+            </ButtonWrapper>
           ))}
-        </Wrapper>
+        </Header>
       </GradientBackground>
     </Page>
   )
+
+  function getActiveColorForPage(page: number): string {
+    switch (page) {
+      case 0:
+        return '#0097FF'
+      case 1:
+        return '#70e1f5'
+      case 2:
+        return '#F7D19A'
+      case 3:
+        return '#EF8F78'
+      default:
+        return '#ffffff'
+    }
+  }
 }
 
 export default Home
