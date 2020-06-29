@@ -1,11 +1,11 @@
 import { NextPage } from 'next'
 import React from 'react'
 
-const Home: NextPage = () => {
+const Education: NextPage = () => {
   return (
     <>
-      <h1>Welcome</h1>
-      <p>This will become the homepage</p>
+      <h1>Education</h1>
+      <p>Started from the bottom now we're here...</p>
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -21,4 +21,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Education
