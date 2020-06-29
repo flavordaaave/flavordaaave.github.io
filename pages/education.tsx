@@ -5,7 +5,7 @@ const Education: NextPage = () => {
   return (
     <>
       <h1>Education</h1>
-      <p>Started from the bottom now we're here...</p>
+      <p>Started from the bottom now we&apos;re here...</p>
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
