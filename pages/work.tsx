@@ -1,11 +1,11 @@
 import { NextPage } from 'next'
 import React from 'react'
 
-const Home: NextPage = () => {
+const Work: NextPage = () => {
   return (
     <>
-      <h1>Welcome</h1>
-      <p>This will become the homepage</p>
+      <h1>Work</h1>
+      <p>Work work work work work...</p>
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -21,4 +21,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Work

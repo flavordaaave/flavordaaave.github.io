@@ -1,8 +1,10 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 
+import { PageLayout } from '../components'
 import { mediaQueries } from '../styles/media-queries'
 
 const GlobalStyle = createGlobalStyle`
@@ -32,6 +34,8 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const MyApp: React.FunctionComponent<AppProps> = ({ Component, pageProps }) => {
+  const router = useRouter()
+
   return (
     <>
       <Head>
@@ -40,7 +44,9 @@ const MyApp: React.FunctionComponent<AppProps> = ({ Component, pageProps }) => {
           rel="stylesheet"
         />
       </Head>
-      <Component {...pageProps} />
+      <PageLayout path={router.pathname}>
+        <Component {...pageProps} />
+      </PageLayout>
       <GlobalStyle />
     </>
   )
