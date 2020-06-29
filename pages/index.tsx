@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import {
   AspectRatioBox,
+  ContentContainer,
   GradientBackground,
   NavButton,
   Page,
@@ -11,14 +12,14 @@ import {
 import { mediaQueries } from '../styles/media-queries'
 
 const Header = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   margin: 60px auto 60px auto;
-  width: 100%;
   max-width: 600px;
-  align-items: center;
+  width: 100%;
 `
 
 const ButtonWrapper = styled(AspectRatioBox)`
@@ -26,17 +27,6 @@ const ButtonWrapper = styled(AspectRatioBox)`
   ${mediaQueries(4)`
     width: 25%;
   `};
-`
-
-const Content = styled.div`
-  width: calc(100% - 28px);
-  background-color: #ffffff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 6px;
-  margin: 0 auto;
-  max-width: 800px;
-  transform: translateY(-40px);
-  padding: 14px;
 `
 
 const Home: NextPage = () => {
@@ -59,7 +49,7 @@ const Home: NextPage = () => {
           ))}
         </Header>
       </GradientBackground>
-      <Content>
+      <ContentContainer>
         <p>Page {activePage + 1} content...</p>
         <p>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
@@ -72,7 +62,7 @@ const Home: NextPage = () => {
           et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
           takimata sanctus est Lorem ipsum dolor sit amet.
         </p>
-      </Content>
+      </ContentContainer>
     </Page>
   )
 

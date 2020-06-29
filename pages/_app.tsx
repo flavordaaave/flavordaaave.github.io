@@ -9,6 +9,10 @@ const GlobalStyle = createGlobalStyle`
   html, body {
     margin: 0;
     padding: 0;
+  }
+
+  body {
+    background-color: #f2f2f2;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
     font-weight: 300;
