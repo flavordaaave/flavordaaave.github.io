@@ -1,4 +1,5 @@
 export { AspectRatioBox } from './aspect-ratio-box'
+export { ContentContainer } from './content-container'
 export { GradientBackground } from './gradient-background'
 export { NavButton } from './nav-button'
 export { Page } from './page'
