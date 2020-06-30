@@ -8,7 +8,7 @@ import {
   GradientBackground,
   NavButton,
 } from '../components'
-import { mediaQueries } from '../styles/media-queries'
+import { mediaQueries } from '../styles'
 
 const Container = styled.div`
   width: 100%;
@@ -51,11 +51,7 @@ export const PageLayout: React.FunctionComponent<PageLayoutProp> = ({
         <Header>
           {['/', '/skills', '/work', '/education'].map((p) => (
             <ButtonWrapper key={p} ratio={1}>
-              <NavButton
-                activeColor={getActiveColorForPath(p)}
-                isActive={p === path}
-                onClick={() => router.push(p)}
-              >
+              <NavButton isActive={p === path} onClick={() => router.push(p)}>
                 {p}
               </NavButton>
             </ButtonWrapper>
@@ -65,19 +61,4 @@ export const PageLayout: React.FunctionComponent<PageLayoutProp> = ({
       <ContentContainer>{children}</ContentContainer>
     </Container>
   )
-
-  function getActiveColorForPath(path: string): string {
-    switch (path) {
-      case '/':
-        return '#0097FF'
-      case '/skills':
-        return '#70e1f5'
-      case '/work':
-        return '#F7D19A'
-      case '/education':
-        return '#EF8F78'
-      default:
-        return '#ffffff'
-    }
-  }
 }
