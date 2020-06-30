@@ -7,6 +7,7 @@ interface ConfigPage {
 
 interface Config {
   pages: {
+    '/': ConfigPage
     [key: string]: ConfigPage | undefined
   }
 }
