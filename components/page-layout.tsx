@@ -6,8 +6,10 @@ import {
   AspectRatioBox,
   ContentContainer,
   GradientBackground,
+  GradientHeadline,
   NavButton,
 } from '../components'
+import CONFIG from '../CONFIG'
 import { mediaQueries } from '../styles'
 
 const Container = styled.div`
@@ -45,20 +47,26 @@ export const PageLayout: React.FunctionComponent<PageLayoutProp> = ({
   path,
 }) => {
   const router = useRouter()
+
   return (
     <Container>
       <GradientBackground path={path}>
         <Header>
-          {['/', '/skills', '/work', '/education'].map((p) => (
+          {Object.keys(CONFIG.pages).map((p) => (
             <ButtonWrapper key={p} ratio={1}>
               <NavButton isActive={p === path} onClick={() => router.push(p)}>
-                {p}
+                {CONFIG.pages[p]?.title || path}
               </NavButton>
             </ButtonWrapper>
           ))}
         </Header>
       </GradientBackground>
-      <ContentContainer>{children}</ContentContainer>
+      <ContentContainer>
+        <GradientHeadline path={path}>
+          {CONFIG.pages[path]?.title || path}
+        </GradientHeadline>
+        {children}
+      </ContentContainer>
     </Container>
   )
 }

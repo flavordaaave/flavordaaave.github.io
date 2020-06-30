@@ -4,7 +4,6 @@ import React from 'react'
 const Work: NextPage = () => {
   return (
     <>
-      <h1>Work</h1>
       <p>Work work work work work...</p>
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy

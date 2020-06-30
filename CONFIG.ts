@@ -1,6 +1,17 @@
 /* eslint-disable sort-keys */
 
-const CONFIG = {
+interface ConfigPage {
+  title: string
+  gradient: string[]
+}
+
+interface Config {
+  pages: {
+    [key: string]: ConfigPage | undefined
+  }
+}
+
+const CONFIG: Config = {
   pages: {
     '/': {
       title: 'Welcome',
