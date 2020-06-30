@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 interface NavButtonProps {
-  activeColor: string
   isActive: boolean
   onClick: () => void
 }
@@ -23,8 +22,8 @@ export const NavButton = styled.div<NavButtonProps>`
   border-radius: 6px;
   font-weight: 700;
   color: ${({ isActive }) => (isActive && '#ffffff') || '#000000'};
-  background-color: ${({ activeColor, isActive }) =>
-    (isActive && activeColor) || '#ffffff'};
+  background-color: ${({ isActive }) =>
+    (isActive && 'transparent') || '#ffffff'};
   cursor: pointer;
   box-shadow: ${({ isActive }) =>
     (isActive && SHADOW_ACTIVE) || SHADOW_DEFAULT};
