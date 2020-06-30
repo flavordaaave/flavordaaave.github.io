@@ -47,7 +47,7 @@ export const PageLayout: React.FunctionComponent<PageLayoutProp> = ({
   const router = useRouter()
   return (
     <Container>
-      <GradientBackground variation={getGradienVariationForPath(path)}>
+      <GradientBackground path={path}>
         <Header>
           {['/', '/skills', '/work', '/education'].map((p) => (
             <ButtonWrapper key={p} ratio={1}>
@@ -65,21 +65,6 @@ export const PageLayout: React.FunctionComponent<PageLayoutProp> = ({
       <ContentContainer>{children}</ContentContainer>
     </Container>
   )
-
-  function getGradienVariationForPath(path: string): 0 | 1 | 2 | 3 {
-    switch (path) {
-      case '/':
-        return 0
-      case '/skills':
-        return 1
-      case '/work':
-        return 2
-      case '/education':
-        return 3
-      default:
-        return 0
-    }
-  }
 
   function getActiveColorForPath(path: string): string {
     switch (path) {
