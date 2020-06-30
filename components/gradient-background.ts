@@ -9,7 +9,10 @@ interface GradientBackgroundProps {
 const GRADIENT_COLORS = [
   ...new Set(
     ([] as string[]).concat(
-      ...Object.values(CONFIG.pages).map((p) => p.gradient)
+      ...Object.values(CONFIG.pages).reduce((acc, curr) => {
+        if (curr?.gradient) acc.push(curr.gradient)
+        return acc
+      }, [] as string[][])
     )
   ),
 ].join(',')
