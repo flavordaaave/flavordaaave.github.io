@@ -6,9 +6,11 @@ import {
   AspectRatioBox,
   ContentContainer,
   GradientBackground,
+  GradientHeadline,
   NavButton,
 } from '../components'
-import { mediaQueries } from '../styles/media-queries'
+import CONFIG from '../CONFIG'
+import { mediaQueries } from '../styles'
 
 const Container = styled.div`
   width: 100%;
@@ -45,54 +47,26 @@ export const PageLayout: React.FunctionComponent<PageLayoutProp> = ({
   path,
 }) => {
   const router = useRouter()
+
   return (
     <Container>
-      <GradientBackground variation={getGradienVariationForPath(path)}>
+      <GradientBackground path={path}>
         <Header>
-          {['/', '/skills', '/work', '/education'].map((p) => (
+          {Object.keys(CONFIG.pages).map((p) => (
             <ButtonWrapper key={p} ratio={1}>
-              <NavButton
-                activeColor={getActiveColorForPath(p)}
-                isActive={p === path}
-                onClick={() => router.push(p)}
-              >
-                {p}
+              <NavButton isActive={p === path} onClick={() => router.push(p)}>
+                {CONFIG.pages[p]?.title || path}
               </NavButton>
             </ButtonWrapper>
           ))}
         </Header>
       </GradientBackground>
-      <ContentContainer>{children}</ContentContainer>
+      <ContentContainer>
+        <GradientHeadline path={path}>
+          {CONFIG.pages[path]?.title || path}
+        </GradientHeadline>
+        {children}
+      </ContentContainer>
     </Container>
   )
-
-  function getGradienVariationForPath(path: string): 0 | 1 | 2 | 3 {
-    switch (path) {
-      case '/':
-        return 0
-      case '/skills':
-        return 1
-      case '/work':
-        return 2
-      case '/education':
-        return 3
-      default:
-        return 0
-    }
-  }
-
-  function getActiveColorForPath(path: string): string {
-    switch (path) {
-      case '/':
-        return '#0097FF'
-      case '/skills':
-        return '#70e1f5'
-      case '/work':
-        return '#F7D19A'
-      case '/education':
-        return '#EF8F78'
-      default:
-        return '#ffffff'
-    }
-  }
 }

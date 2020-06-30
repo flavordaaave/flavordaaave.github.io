@@ -4,7 +4,6 @@ import React from 'react'
 const Home: NextPage = () => {
   return (
     <>
-      <h1>Welcome</h1>
       <p>This will become the homepage</p>
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy

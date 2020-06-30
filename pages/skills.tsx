@@ -4,7 +4,6 @@ import React from 'react'
 const Skills: NextPage = () => {
   return (
     <>
-      <h1>Skills</h1>
       <p>Some skills to show-off</p>
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy

@@ -5,7 +5,7 @@ import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 
 import { PageLayout } from '../components'
-import { mediaQueries } from '../styles/media-queries'
+import { mediaQueries } from '../styles'
 
 const GlobalStyle = createGlobalStyle`
   html, body {
