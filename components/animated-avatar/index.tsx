@@ -15,6 +15,7 @@ export const AnimatedAvatar: React.FunctionComponent<AnimatedAvatarProps> = () =
     <div
       style={{
         height: 280,
+        margin: 'auto',
         width: 240,
       }}
     >
