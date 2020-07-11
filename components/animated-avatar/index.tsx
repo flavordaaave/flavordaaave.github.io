@@ -48,10 +48,10 @@ export const AnimatedAvatar: React.FunctionComponent<AnimatedAvatarProps> = () =
           <NeckShadow left={98} opacity={0.1} top={182} />
 
           {/* Face */}
+          <Mouth left={101} state={mouth} top={148} />
           <Moustache left={96} opacity={1} top={136} />
           <Beard left={68} opacity={0.2} top={99} />
           <Nose left={107} top={126} />
-          <Mouth left={101} state={mouth} top={145} />
           <Eye left={86} state={leftEye} top={94} />
           <Eye left={135} state={rightEye} top={94} />
           <Eyebrow left={79} state={leftEyebrow} top={81} />
