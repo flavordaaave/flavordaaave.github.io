@@ -11,13 +11,13 @@ import {
   NeckShadow,
   Nose,
 } from './svg/body'
-import { Shirt } from './svg/clothing'
+import { Hoodie, Shirt } from './svg/clothing'
 
 interface AvatarProps {
   path: string
 }
 
-export const Avatar: React.FunctionComponent<AvatarProps> = () => {
+export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
   const [leftEyebrow, setLeftEyebrow] = React.useState<
     'normal' | 'raised' | 'down'
   >('raised')
@@ -32,9 +32,24 @@ export const Avatar: React.FunctionComponent<AvatarProps> = () => {
   )
   const [mouth, setMouth] = React.useState<'open' | 'smile' | 'serious'>('open')
   const [beard, setBeard] = React.useState<'normal' | 'raised'>('raised')
+  const [cloths, setCloths] = React.useState<'shirt' | 'hoodie'>(
+    path === `/` ? 'shirt' : 'hoodie'
+  )
 
-  // NOTE:
-  // All SVG shapes have been optimized using https://jakearchibald.github.io/svgomg/
+  React.useEffect(() => {
+    switch (path) {
+      case '/':
+        return setHome()
+      case '/skills':
+        return setSkills()
+      case '/work':
+        return setWork()
+      case '/education':
+      default:
+        setHome()
+    }
+  }, [path])
+
   return (
     <>
       <div
@@ -67,25 +82,32 @@ export const Avatar: React.FunctionComponent<AvatarProps> = () => {
           }}
           viewBox="0 0 240 280"
         >
-          {/* Body */}
-          <Body left={24} top={27} />
-          <NeckShadow left={98} opacity={0.1} top={182} />
+          <mask fill="white" id="Mask">
+            <path d="M240,2.84217094e-14 L240,160 C240,226.27417 186.27417,280 120,280 C54.3885717,280 1.07577143,227.343314 0.0160765715,161.984419 L0,160 L0,2.84217094e-14 L240,2.84217094e-14 Z"></path>
+          </mask>
 
-          {/* Face */}
-          <Mouth left={101} state={mouth} top={148} />
-          <Moustache left={96} opacity={1} state={beard} top={140} />
-          <Beard left={68} opacity={0.2} state={beard} top={99} />
-          <Nose left={107} state={beard} top={128} />
-          <Eye left={86} state={leftEye} top={94} />
-          <Eye left={136} state={rightEye} top={94} />
-          <Eyebrow left={79} state={leftEyebrow} top={81} />
-          <Eyebrow flip left={134} state={rightEyebrow} top={81} />
+          <g mask="url(#Mask)">
+            {/* Body */}
+            <Body left={24} top={27} />
+            <NeckShadow left={98} opacity={0.1} top={182} />
 
-          {/* Head */}
-          <Hair left={67} top={21} />
+            {/* Face */}
+            <Mouth left={101} state={mouth} top={148} />
+            <Moustache left={96} opacity={1} state={beard} top={140} />
+            <Beard left={68} opacity={0.2} state={beard} top={99} />
+            <Nose left={107} state={beard} top={128} />
+            <Eye left={86} state={leftEye} top={94} />
+            <Eye left={136} state={rightEye} top={94} />
+            <Eyebrow left={79} state={leftEyebrow} top={81} />
+            <Eyebrow flip left={134} state={rightEyebrow} top={81} />
 
-          {/* Clothing */}
-          <Shirt left={24} top={195} />
+            {/* Head */}
+            <Hair left={67} top={21} />
+
+            {/* Clothing */}
+            <Shirt active={cloths === 'shirt'} left={24} top={195} />
+            <Hoodie active={cloths === 'hoodie'} left={24} top={176.5} />
+          </g>
         </svg>
       </div>
       <button
@@ -160,8 +182,52 @@ export const Avatar: React.FunctionComponent<AvatarProps> = () => {
       >
         Eybrows down
       </button>
+      <button
+        onClick={() => {
+          setCloths('shirt')
+        }}
+      >
+        Shirt
+      </button>
+      <button
+        onClick={() => {
+          setCloths('hoodie')
+        }}
+      >
+        Hoodie
+      </button>
     </>
   )
+
+  function setHome(): void {
+    setLeftEyebrow('raised')
+    setRightEyebrow('raised')
+    setLeftEye('open')
+    setRightEye('open')
+    setBeard('raised')
+    setMouth('open')
+    setCloths('shirt')
+  }
+
+  function setSkills(): void {
+    setLeftEyebrow('down')
+    setRightEyebrow('down')
+    setLeftEye('open')
+    setRightEye('open')
+    setBeard('normal')
+    setMouth('serious')
+    setCloths('shirt')
+  }
+
+  function setWork(): void {
+    setLeftEyebrow('normal')
+    setRightEyebrow('normal')
+    setLeftEye('open')
+    setRightEye('open')
+    setBeard('normal')
+    setMouth('smile')
+    setCloths('hoodie')
+  }
 
   function winkLeft(): void {
     setLeftEye('open')
