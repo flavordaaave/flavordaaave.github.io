@@ -19,10 +19,10 @@ interface AnimatedAvatarProps {
 export const AnimatedAvatar: React.FunctionComponent<AnimatedAvatarProps> = () => {
   const [leftEyebrow, setLeftEyebrow] = React.useState<
     'normal' | 'raised' | 'down'
-  >('normal')
+  >('raised')
   const [rightEyebrow, setRightEyebrow] = React.useState<
     'normal' | 'raised' | 'down'
-  >('normal')
+  >('raised')
   const [leftEye, setLeftEye] = React.useState<'open' | 'pinch' | 'close'>(
     'open'
   )
@@ -30,6 +30,7 @@ export const AnimatedAvatar: React.FunctionComponent<AnimatedAvatarProps> = () =
     'open'
   )
   const [mouth, setMouth] = React.useState<'open' | 'smile' | 'serious'>('open')
+  const [beard, setBeard] = React.useState<'normal' | 'raised'>('raised')
 
   // NOTE:
   // All SVG shapes have been optimized using https://jakearchibald.github.io/svgomg/
@@ -49,8 +50,8 @@ export const AnimatedAvatar: React.FunctionComponent<AnimatedAvatarProps> = () =
 
           {/* Face */}
           <Mouth left={101} state={mouth} top={148} />
-          <Moustache left={96} opacity={1} top={136} />
-          <Beard left={68} opacity={0.2} top={99} />
+          <Moustache left={96} opacity={1} state={beard} top={140} />
+          <Beard left={68} opacity={0.2} state={beard} top={99} />
           <Nose left={107} top={126} />
           <Eye left={86} state={leftEye} top={94} />
           <Eye left={135} state={rightEye} top={94} />
@@ -79,9 +80,36 @@ export const AnimatedAvatar: React.FunctionComponent<AnimatedAvatarProps> = () =
       </button>
       <button onClick={winkLeft}>Wink Left</button>
       <button onClick={winkRight}>Wink Right</button>
-      <button onClick={() => setMouth('open')}>Mouth open</button>
-      <button onClick={() => setMouth('smile')}>Mouth smile</button>
-      <button onClick={() => setMouth('serious')}>Mouth serious</button>
+      <button
+        onClick={() => {
+          setMouth('open')
+          setBeard('raised')
+          setLeftEyebrow('raised')
+          setRightEyebrow('raised')
+        }}
+      >
+        Mouth open
+      </button>
+      <button
+        onClick={() => {
+          setMouth('smile')
+          setBeard('normal')
+          setLeftEyebrow('normal')
+          setRightEyebrow('normal')
+        }}
+      >
+        Mouth smile
+      </button>
+      <button
+        onClick={() => {
+          setMouth('serious')
+          setBeard('normal')
+          setLeftEyebrow('normal')
+          setRightEyebrow('normal')
+        }}
+      >
+        Mouth serious
+      </button>
       <button
         onClick={() => {
           setLeftEyebrow('normal')
