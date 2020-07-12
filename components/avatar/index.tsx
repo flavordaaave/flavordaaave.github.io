@@ -212,8 +212,8 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
   function setSkills(): void {
     setLeftEyebrow('down')
     setRightEyebrow('down')
-    setLeftEye('open')
-    setRightEye('open')
+    setLeftEye('pinch')
+    setRightEye('pinch')
     setBeard('normal')
     setMouth('serious')
     setCloths('shirt')
