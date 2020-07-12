@@ -11,12 +11,13 @@ import {
   NeckShadow,
   Nose,
 } from './svg/body'
+import { Shirt } from './svg/clothing'
 
-interface AnimatedAvatarProps {
+interface AvatarProps {
   path: string
 }
 
-export const AnimatedAvatar: React.FunctionComponent<AnimatedAvatarProps> = () => {
+export const Avatar: React.FunctionComponent<AvatarProps> = () => {
   const [leftEyebrow, setLeftEyebrow] = React.useState<
     'normal' | 'raised' | 'down'
   >('raised')
@@ -40,10 +41,32 @@ export const AnimatedAvatar: React.FunctionComponent<AnimatedAvatarProps> = () =
         style={{
           height: 280,
           margin: 'auto',
+          position: 'relative',
           width: 240,
         }}
       >
-        <svg viewBox="0 0 240 280">
+        <div
+          style={{
+            borderRadius: '50%',
+            bottom: 0,
+            boxShadow:
+              '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)',
+            left: 0,
+            paddingBottom: '100%',
+            position: 'absolute',
+            width: '100%',
+            zIndex: 0,
+          }}
+        />
+        <svg
+          style={{
+            left: 0,
+            position: 'absolute',
+            top: 0,
+            zIndex: 1,
+          }}
+          viewBox="0 0 240 280"
+        >
           {/* Body */}
           <Body left={24} top={27} />
           <NeckShadow left={98} opacity={0.1} top={182} />
@@ -60,6 +83,9 @@ export const AnimatedAvatar: React.FunctionComponent<AnimatedAvatarProps> = () =
 
           {/* Head */}
           <Hair left={67} top={21} />
+
+          {/* Clothing */}
+          <Shirt left={24} top={195} />
         </svg>
       </div>
       <button
