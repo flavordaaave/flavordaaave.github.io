@@ -90,22 +90,22 @@ export const Moustache: React.FunctionComponent<MoustacheProps> = ({
       transform={`translate(${left}, ${top})`}
     >
       <animateTransform
-        additive="sum"
         attributeName="transform"
         begin="indefinite"
         dur="100ms"
         fill="freeze"
+        from={`${left}, ${top - 5}`}
         ref={normal}
         to={`${left}, ${top}`}
         type="translate"
       />
 
       <animateTransform
-        additive="sum"
         attributeName="transform"
         begin="indefinite"
         dur="100ms"
         fill="freeze"
+        from={`${left}, ${top}`}
         ref={raised}
         to={`${left}, ${top - 5}`}
         type="translate"
