@@ -33,22 +33,22 @@ export const Nose: React.FunctionComponent<NoseProps> = ({
       transform={`translate(${left}, ${top})`}
     >
       <animateTransform
-        additive="sum"
         attributeName="transform"
         begin="indefinite"
         dur="100ms"
         fill="freeze"
+        from={`${left}, ${top - 3}`}
         ref={normal}
         to={`${left}, ${top}`}
         type="translate"
       />
 
       <animateTransform
-        additive="sum"
         attributeName="transform"
         begin="indefinite"
         dur="100ms"
         fill="freeze"
+        from={`${left}, ${top}`}
         ref={raised}
         to={`${left}, ${top - 3}`}
         type="translate"
