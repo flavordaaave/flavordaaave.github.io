@@ -98,9 +98,6 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
 
             {/* Head */}
             <Head left={65} top={33} />
-            <Hair left={70} top={24} />
-
-            {/* Face */}
             <Beard left={73} state={beard} top={92.85} />
             <Mouth left={99} state={mouth} top={153} />
             <Moustache left={95} opacity={1} state={beard} top={146} />
@@ -109,6 +106,10 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
             <Eye left={135} state={rightEye} top={97} />
             <Eyebrow left={81} state={leftEyebrow} top={83} />
             <Eyebrow flip left={132} state={rightEyebrow} top={83} />
+
+            {/* Gear */}
+            <Hair left={70} top={29} />
+            <Glasses active={cloths === 'hoodie'} left={66} top={88} />
           </g>
         </svg>
       </div>
