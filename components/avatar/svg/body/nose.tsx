@@ -26,7 +26,7 @@ export const Nose: React.FunctionComponent<NoseProps> = ({
 
   return (
     <path
-      d="M0 0c0 4.418 5.82 8 13 8s13-3.582 13-8"
+      d="M0 0c0 4.418 7.82 8 15 8s15-3.582 15-8H0z"
       fill="#000000"
       fillOpacity="0.15"
       id="Nose"
@@ -37,7 +37,7 @@ export const Nose: React.FunctionComponent<NoseProps> = ({
         begin="indefinite"
         dur="100ms"
         fill="freeze"
-        from={`${left}, ${top - 3}`}
+        from={`${left}, ${top - 4}`}
         ref={normal}
         to={`${left}, ${top}`}
         type="translate"
@@ -50,7 +50,7 @@ export const Nose: React.FunctionComponent<NoseProps> = ({
         fill="freeze"
         from={`${left}, ${top}`}
         ref={raised}
-        to={`${left}, ${top - 3}`}
+        to={`${left}, ${top - 4}`}
         type="translate"
       />
     </path>

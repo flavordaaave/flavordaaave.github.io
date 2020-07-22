@@ -6,12 +6,13 @@ import {
   Eye,
   Eyebrow,
   Hair,
+  Head,
   Moustache,
   Mouth,
   NeckShadow,
   Nose,
 } from './svg/body'
-import { Hoodie, Shirt } from './svg/clothing'
+import { Glasses, Hoodie, Shirt } from './svg/clothing'
 
 interface AvatarProps {
   path: string
@@ -88,25 +89,26 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
 
           <g mask="url(#Mask)">
             {/* Body */}
-            <Body left={24} top={27} />
+            <Body left={24} top={181} />
             <NeckShadow left={98} opacity={0.1} top={182} />
-
-            {/* Face */}
-            <Mouth left={101} state={mouth} top={148} />
-            <Moustache left={96} opacity={1} state={beard} top={140} />
-            <Beard left={68} opacity={0.2} state={beard} top={99} />
-            <Nose left={107} state={beard} top={128} />
-            <Eye left={86} state={leftEye} top={94} />
-            <Eye left={136} state={rightEye} top={94} />
-            <Eyebrow left={79} state={leftEyebrow} top={81} />
-            <Eyebrow flip left={134} state={rightEyebrow} top={81} />
-
-            {/* Head */}
-            <Hair left={67} top={21} />
 
             {/* Clothing */}
             <Shirt active={cloths === 'shirt'} left={24} top={195} />
-            <Hoodie active={cloths === 'hoodie'} left={24} top={176.5} />
+            <Hoodie active={cloths === 'hoodie'} left={24} top={173.5} />
+
+            {/* Head */}
+            <Head left={65} top={33} />
+            <Hair left={70} top={24} />
+
+            {/* Face */}
+            <Beard left={73} state={beard} top={92.85} />
+            <Mouth left={99} state={mouth} top={153} />
+            <Moustache left={95} opacity={1} state={beard} top={146} />
+            <Nose left={105} state={beard} top={135} />
+            <Eye left={87} state={leftEye} top={97} />
+            <Eye left={135} state={rightEye} top={97} />
+            <Eyebrow left={81} state={leftEyebrow} top={83} />
+            <Eyebrow flip left={132} state={rightEyebrow} top={83} />
           </g>
         </svg>
       </div>
