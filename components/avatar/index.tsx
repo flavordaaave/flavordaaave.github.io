@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { Laptop } from './svg/accessories'
 import {
   Beard,
   Body,
@@ -12,7 +13,7 @@ import {
   NeckShadow,
   Nose,
 } from './svg/body'
-import { Glasses, Hoodie, Shirt } from './svg/clothing'
+import { Glasses, Hoodie, Shirt, Suit } from './svg/clothing'
 
 interface AvatarProps {
   path: string
@@ -33,8 +34,8 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
   )
   const [mouth, setMouth] = React.useState<'open' | 'smile' | 'serious'>('open')
   const [beard, setBeard] = React.useState<'normal' | 'raised'>('raised')
-  const [cloths, setCloths] = React.useState<'shirt' | 'hoodie'>(
-    path === `/` ? 'shirt' : 'hoodie'
+  const [cloths, setCloths] = React.useState<'welcome' | 'work' | 'education'>(
+    path === `/education` ? 'education' : path === `/work` ? 'work' : 'welcome'
   )
 
   React.useEffect(() => {
@@ -46,6 +47,7 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
       case '/work':
         return setWork()
       case '/education':
+        return setEducation()
       default:
         setHome()
     }
@@ -93,8 +95,9 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
             <NeckShadow left={98} opacity={0.1} top={182} />
 
             {/* Clothing */}
-            <Shirt active={cloths === 'shirt'} left={24} top={195} />
-            <Hoodie active={cloths === 'hoodie'} left={24} top={173.5} />
+            <Shirt active={cloths === 'welcome'} left={24} top={195} />
+            <Hoodie active={cloths === 'work'} left={24} top={173.5} />
+            <Suit active={cloths === 'education'} left={24} top={183.5} />
 
             {/* Head */}
             <Head left={65} top={33} />
@@ -109,7 +112,8 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
 
             {/* Gear */}
             <Hair left={70} top={29} />
-            <Glasses active={cloths === 'hoodie'} left={66} top={88} />
+            <Glasses active={cloths === 'work'} left={66} top={88} />
+            <Laptop active={cloths === 'work'} left={31} top={171} />
           </g>
         </svg>
       </div>
@@ -187,14 +191,14 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
       </button>
       <button
         onClick={() => {
-          setCloths('shirt')
+          setCloths('welcome')
         }}
       >
         Shirt
       </button>
       <button
         onClick={() => {
-          setCloths('hoodie')
+          setCloths('work')
         }}
       >
         Hoodie
@@ -209,7 +213,7 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
     setRightEye('open')
     setBeard('raised')
     setMouth('open')
-    setCloths('shirt')
+    setCloths('welcome')
   }
 
   function setSkills(): void {
@@ -219,7 +223,7 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
     setRightEye('pinch')
     setBeard('normal')
     setMouth('serious')
-    setCloths('shirt')
+    setCloths('welcome')
   }
 
   function setWork(): void {
@@ -229,7 +233,17 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
     setRightEye('open')
     setBeard('normal')
     setMouth('smile')
-    setCloths('hoodie')
+    setCloths('work')
+  }
+
+  function setEducation(): void {
+    setLeftEyebrow('down')
+    setRightEyebrow('normal')
+    setLeftEye('close')
+    setRightEye('open')
+    setBeard('normal')
+    setMouth('smile')
+    setCloths('education')
   }
 
   function winkLeft(): void {
