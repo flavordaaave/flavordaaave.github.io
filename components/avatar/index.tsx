@@ -13,7 +13,7 @@ import {
   NeckShadow,
   Nose,
 } from './svg/body'
-import { Glasses, Hoodie, Shirt, Suit } from './svg/clothing'
+import { Glasses, Hoodie, Shirt, Suit, UniversityHat } from './svg/clothing'
 
 interface AvatarProps {
   path: string
@@ -114,6 +114,7 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
             <Hair left={70} top={29} />
             <Glasses active={cloths === 'work'} left={66} top={88} />
             <Laptop active={cloths === 'work'} left={31} top={171} />
+            <UniversityHat active={cloths === 'education'} left={25} top={9} />
           </g>
         </svg>
       </div>
