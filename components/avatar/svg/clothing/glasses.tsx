@@ -11,8 +11,8 @@ export const Glasses: React.FunctionComponent<GlassesProps> = ({
   left = 0,
   top = 0,
 }) => {
-  const show = React.useRef(null)
-  const hide = React.useRef(null)
+  const show = React.useRef<SVGElement>(null)
+  const hide = React.useRef<SVGElement>(null)
 
   const firstUpdate = React.useRef(true)
   React.useEffect(() => {
@@ -21,9 +21,10 @@ export const Glasses: React.FunctionComponent<GlassesProps> = ({
       return
     }
     if (active) {
-      return show.current?.beginElement()
+      show.current?.beginElement()
+    } else {
+      hide.current?.beginElement()
     }
-    return hide.current?.beginElement()
   }, [active])
 
   return (

@@ -11,16 +11,18 @@ export const Beard: React.FunctionComponent<BeardProps> = ({
   state,
   top = 0,
 }) => {
-  const normal = React.useRef(null)
-  const raised = React.useRef(null)
+  const normal = React.useRef<SVGElement>(null)
+  const raised = React.useRef<SVGElement>(null)
 
   React.useEffect(() => {
     switch (state) {
       case 'raised':
-        return raised.current?.beginElement()
+        raised.current?.beginElement()
+        return
       case 'normal':
       default:
-        return normal.current?.beginElement()
+        normal.current?.beginElement()
+        return
     }
   }, [state])
 
@@ -65,16 +67,17 @@ export const Moustache: React.FunctionComponent<MoustacheProps> = ({
   state,
   top = 0,
 }) => {
-  const normal = React.useRef(null)
-  const raised = React.useRef(null)
+  const normal = React.useRef<SVGElement>(null)
+  const raised = React.useRef<SVGElement>(null)
 
   React.useEffect(() => {
     switch (state) {
       case 'raised':
-        return raised.current?.beginElement()
+        raised.current?.beginElement()
+        return
       case 'normal':
       default:
-        return normal.current?.beginElement()
+        normal.current?.beginElement()
     }
   }, [state])
 

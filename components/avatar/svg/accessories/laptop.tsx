@@ -11,8 +11,8 @@ export const Laptop: React.FunctionComponent<LaptopProps> = ({
   left = 0,
   top = 0,
 }) => {
-  const show = React.useRef(null)
-  const hide = React.useRef(null)
+  const show = React.useRef<SVGElement>(null)
+  const hide = React.useRef<SVGElement>(null)
 
   const firstUpdate = React.useRef(true)
   React.useEffect(() => {
@@ -23,6 +23,9 @@ export const Laptop: React.FunctionComponent<LaptopProps> = ({
 
     if (active) {
       const timeout = setTimeout(() => {
+        if (show.current) {
+          show.current.dataset
+        }
         show.current?.beginElement()
       }, 500)
       return () => clearTimeout(timeout)

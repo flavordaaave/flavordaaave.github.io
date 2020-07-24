@@ -11,19 +11,21 @@ export const Eye: React.FunctionComponent<EyeProps> = ({
   state,
   top = 0,
 }) => {
-  const open = React.useRef(null)
-  const pinch = React.useRef(null)
-  const close = React.useRef(null)
+  const open = React.useRef<SVGElement>(null)
+  const pinch = React.useRef<SVGElement>(null)
+  const close = React.useRef<SVGElement>(null)
 
   React.useEffect(() => {
     switch (state) {
       case 'pinch':
-        return pinch.current?.beginElement()
+        pinch.current?.beginElement()
+        return
       case 'close':
-        return close.current?.beginElement()
+        close.current?.beginElement()
+        return
       case 'open':
       default:
-        return open.current?.beginElement()
+        open.current?.beginElement()
     }
   }, [state])
 
