@@ -11,19 +11,21 @@ export const Mouth: React.FunctionComponent<MouthProps> = ({
   state,
   top = 0,
 }) => {
-  const open = React.useRef(null)
-  const smile = React.useRef(null)
-  const serious = React.useRef(null)
+  const open = React.useRef<SVGElement>(null)
+  const smile = React.useRef<SVGElement>(null)
+  const serious = React.useRef<SVGElement>(null)
 
   React.useEffect(() => {
     switch (state) {
       case 'smile':
-        return smile.current?.beginElement()
+        smile.current?.beginElement()
+        return
       case 'serious':
-        return serious.current?.beginElement()
+        serious.current?.beginElement()
+        return
       case 'open':
       default:
-        return open.current?.beginElement()
+        open.current?.beginElement()
     }
   }, [state])
 

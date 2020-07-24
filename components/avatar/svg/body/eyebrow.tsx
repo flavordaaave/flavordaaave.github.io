@@ -13,12 +13,12 @@ export const Eyebrow: React.FunctionComponent<EyebrowProps> = ({
   state,
   top = 0,
 }) => {
-  const normalBrow = React.useRef(null)
-  const normalPosition = React.useRef(null)
-  const raisedBrow = React.useRef(null)
-  const raisedPosition = React.useRef(null)
-  const downBrow = React.useRef(null)
-  const downPosition = React.useRef(null)
+  const normalBrow = React.useRef<SVGElement>(null)
+  const normalPosition = React.useRef<SVGElement>(null)
+  const raisedBrow = React.useRef<SVGElement>(null)
+  const raisedPosition = React.useRef<SVGElement>(null)
+  const downBrow = React.useRef<SVGElement>(null)
+  const downPosition = React.useRef<SVGElement>(null)
 
   /**
    * HACK:
@@ -48,7 +48,6 @@ export const Eyebrow: React.FunctionComponent<EyebrowProps> = ({
       default:
         normalBrow.current?.beginElement()
         normalPosition.current?.beginElement()
-        return
     }
   }, [state])
 
