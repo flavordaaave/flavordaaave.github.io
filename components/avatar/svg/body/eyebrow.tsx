@@ -41,7 +41,12 @@ export const Eyebrow: React.FunctionComponent<EyebrowProps> = ({
     prevState.current = state
   })
 
+  const firstUpdate = React.useRef(true)
   React.useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false
+      return
+    }
     switch (state) {
       case 'raised':
         raisedBrow.current?.beginElement()
@@ -74,6 +79,9 @@ export const Eyebrow: React.FunctionComponent<EyebrowProps> = ({
         }
         fill="#342920"
         id="Eyebrow"
+        transform={`translate(0, ${
+          state === 'raised' ? -4 : state === 'down' ? 2 : 0
+        })`}
       >
         <animate
           attributeName="d"
