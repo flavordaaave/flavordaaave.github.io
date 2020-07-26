@@ -29,18 +29,30 @@ interface AvatarProps {
 export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
   const [leftEyebrow, setLeftEyebrow] = React.useState<
     'normal' | 'raised' | 'down'
-  >('raised')
+  >(
+    path === '/'
+      ? 'raised'
+      : path === '/skills'
+      ? 'down'
+      : path === '/education'
+      ? 'down'
+      : 'normal'
+  )
   const [rightEyebrow, setRightEyebrow] = React.useState<
     'normal' | 'raised' | 'down'
-  >('raised')
+  >(path === '/' ? 'raised' : path === '/skills' ? 'down' : 'normal')
   const [leftEye, setLeftEye] = React.useState<'open' | 'pinch' | 'close'>(
-    'open'
+    path === '/skills' ? 'pinch' : path === '/education' ? 'close' : 'open'
   )
   const [rightEye, setRightEye] = React.useState<'open' | 'pinch' | 'close'>(
-    'open'
+    path === '/skills' ? 'pinch' : 'open'
   )
-  const [mouth, setMouth] = React.useState<'open' | 'smile' | 'serious'>('open')
-  const [beard, setBeard] = React.useState<'normal' | 'raised'>('raised')
+  const [mouth, setMouth] = React.useState<'open' | 'smile' | 'serious'>(
+    path === '/' ? 'open' : path === '/skills' ? 'serious' : 'smile'
+  )
+  const [beard, setBeard] = React.useState<'normal' | 'raised'>(
+    path === '/' ? 'raised' : 'normal'
+  )
 
   React.useEffect(() => {
     switch (path) {
