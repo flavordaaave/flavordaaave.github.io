@@ -92,7 +92,7 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
           <g mask="url(#Mask)">
             {/* Body */}
             <Body left={24} top={181} />
-            <NeckShadow left={98} opacity={0.1} top={182} />
+            <NeckShadow left={98} opacity={0.1} top={179} />
 
             {/* Clothing */}
             <Shirt active={cloths === 'welcome'} left={24} top={195} />
@@ -100,21 +100,21 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
             <Suit active={cloths === 'education'} left={24} top={183.5} />
 
             {/* Head */}
-            <Head left={65} top={33} />
-            <Beard left={73} state={beard} top={92.85} />
-            <Mouth left={99} state={mouth} top={153} />
-            <Moustache left={95} opacity={1} state={beard} top={146} />
-            <Nose left={105} state={beard} top={135} />
-            <Eye left={87} state={leftEye} top={97} />
-            <Eye left={135} state={rightEye} top={97} />
-            <Eyebrow left={81} state={leftEyebrow} top={83} />
-            <Eyebrow flip left={132} state={rightEyebrow} top={83} />
+            <Head left={65} top={36} />
+            <Beard left={73} state={beard} top={97} />
+            <Mouth left={99} state={mouth} top={154} />
+            <Moustache left={95} opacity={1} state={beard} top={148} />
+            <Nose left={105} state={beard} top={137} />
+            <Eye left={87} state={leftEye} top={100} />
+            <Eye left={135} state={rightEye} top={100} />
+            <Eyebrow left={81} state={leftEyebrow} top={89} />
+            <Eyebrow flip left={132} state={rightEyebrow} top={89} />
 
             {/* Gear */}
-            <Hair left={70} top={29} />
-            <Glasses active={cloths === 'work'} left={66} top={88} />
+            <Hair left={70} top={27} />
+            <Glasses active={cloths === 'work'} left={66} top={90} />
             <Laptop active={cloths === 'work'} left={31} top={171} />
-            <UniversityHat active={cloths === 'education'} left={25} top={9} />
+            <UniversityHat active={cloths === 'education'} left={25} top={11} />
           </g>
         </svg>
       </div>
