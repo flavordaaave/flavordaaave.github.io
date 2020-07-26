@@ -6,6 +6,11 @@ interface BeardProps {
   state?: 'normal' | 'raised'
 }
 
+const BEARD_PATH_NORMAL =
+  'M0 40V0c1.73.576 1 29 8 44s17 8.001 28 7.999h21C69 51.996 79 59 86 44S91.701.766 94 0v40c-1 11-6 22-10 28S63 89 57 91c-2.148.537-2 1-10 1s-8.148-.538-10-1.001c-6-2-23-17-27-23S1 51 0 40z'
+const BEARD_PATH_RAISED =
+  'M0 40V0c1.73.576-1 23 8 44s17 5.001 28 4.999h21C69 48.996 77 65 86 44S91.701.766 94 0v40c-1 11-6 22-10 28S63 89 57 91c-2.148.537-2 1-10 1s-8.148-.538-10-1.001c-6-2-23-17-27-23S1 51 0 40z'
+
 export const Beard: React.FunctionComponent<BeardProps> = ({
   left = 0,
   state,
@@ -28,7 +33,7 @@ export const Beard: React.FunctionComponent<BeardProps> = ({
 
   return (
     <path
-      d="M0 40V0c1.73.576 1 29 8 44s17 8.001 28 7.999h21C69 51.996 79 59 86 44S91.701.766 94 0v40c-1 11-6 22-10 28S63 89 57 91c-2.148.537-2 1-10 1s-8.148-.538-10-1.001c-6-2-23-17-27-23S1 51 0 40z"
+      d={state === 'raised' ? BEARD_PATH_RAISED : BEARD_PATH_NORMAL}
       fill="#BD946E"
       id="Beard"
       transform={`translate(${left}, ${top})`}
@@ -39,7 +44,7 @@ export const Beard: React.FunctionComponent<BeardProps> = ({
         dur="100ms"
         fill="freeze"
         ref={normal}
-        to="M0 40V0c1.73.576 1 29 8 44s17 8.001 28 7.999h21C69 51.996 79 59 86 44S91.701.766 94 0v40c-1 11-6 22-10 28S63 89 57 91c-2.148.537-2 1-10 1s-8.148-.538-10-1.001c-6-2-23-17-27-23S1 51 0 40z"
+        to={BEARD_PATH_NORMAL}
       />
 
       <animate
@@ -48,7 +53,7 @@ export const Beard: React.FunctionComponent<BeardProps> = ({
         dur="100ms"
         fill="freeze"
         ref={raised}
-        to="M0 40V0c1.73.576-1 23 8 44s17 5.001 28 4.999h21C69 48.996 77 65 86 44S91.701.766 94 0v40c-1 11-6 22-10 28S63 89 57 91c-2.148.537-2 1-10 1s-8.148-.538-10-1.001c-6-2-23-17-27-23S1 51 0 40z"
+        to={BEARD_PATH_RAISED}
       />
     </path>
   )
