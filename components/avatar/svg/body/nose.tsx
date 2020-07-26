@@ -14,7 +14,12 @@ export const Nose: React.FunctionComponent<NoseProps> = ({
   const normal = React.useRef<SVGElement>(null)
   const raised = React.useRef<SVGElement>(null)
 
+  const firstUpdate = React.useRef(true)
   React.useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false
+      return
+    }
     switch (state) {
       case 'raised':
         raised.current?.beginElement()
@@ -31,7 +36,7 @@ export const Nose: React.FunctionComponent<NoseProps> = ({
       fill="#000000"
       fillOpacity="0.15"
       id="Nose"
-      transform={`translate(${left}, ${top})`}
+      transform={`translate(${left}, ${top - (state === 'raised' ? 4 : 0)})`}
     >
       <animateTransform
         attributeName="transform"

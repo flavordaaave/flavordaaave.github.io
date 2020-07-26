@@ -75,7 +75,12 @@ export const Moustache: React.FunctionComponent<MoustacheProps> = ({
   const normal = React.useRef<SVGElement>(null)
   const raised = React.useRef<SVGElement>(null)
 
+  const firstUpdate = React.useRef(true)
   React.useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false
+      return
+    }
     switch (state) {
       case 'raised':
         raised.current?.beginElement()
@@ -92,7 +97,7 @@ export const Moustache: React.FunctionComponent<MoustacheProps> = ({
       fill="#342920"
       fillOpacity={opacity}
       id="Moustache"
-      transform={`translate(${left}, ${top})`}
+      transform={`translate(${left}, ${top - (state === 'raised' ? 4 : 0)})`}
     >
       <animateTransform
         attributeName="transform"
