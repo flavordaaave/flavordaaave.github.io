@@ -1,3 +1,4 @@
+export * from './avatar'
 export * from './aspect-ratio-box'
 export * from './content-container'
 export * from './gradient-background'

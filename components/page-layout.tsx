@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import {
   AspectRatioBox,
+  Avatar,
   ContentContainer,
   GradientBackground,
   GradientHeadline,
@@ -51,6 +52,7 @@ export const PageLayout: React.FunctionComponent<PageLayoutProp> = ({
   return (
     <Container>
       <GradientBackground path={path}>
+        <Avatar path={path} />
         <Header>
           {Object.keys(CONFIG.pages).map((p) => (
             <ButtonWrapper key={p} ratio={1}>

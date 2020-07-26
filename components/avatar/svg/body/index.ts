@@ -1,0 +1,7 @@
+export * from './beard'
+export * from './body'
+export * from './eye'
+export * from './eyebrow'
+export * from './hair'
+export * from './mouth'
+export * from './nose'

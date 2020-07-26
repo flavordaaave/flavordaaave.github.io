@@ -1,0 +1,6 @@
+export * from './glasses'
+export * from './hoodie'
+export * from './ninja'
+export * from './shirt'
+export * from './suit'
+export * from './university-hat'
