@@ -57,6 +57,26 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
     }
   }, [path])
 
+  React.useEffect(() => {
+    if (path === '/') {
+      const interval = setInterval(() => {
+        const rand = Math.floor(Math.random() * 3) + 1
+        if (rand === 1) {
+          winkLeft()
+        } else if (rand === 2) {
+          winkRight()
+        } else {
+          winkLeft()
+          winkRight()
+        }
+      }, 4000)
+
+      return () => {
+        clearInterval(interval)
+      }
+    }
+  }, [path])
+
   return (
     <div
       style={{
@@ -166,8 +186,8 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
     setLeftEyebrow('down')
     setTimeout(() => {
       setLeftEye('open')
-      setLeftEyebrow('normal')
-    }, 200)
+      setLeftEyebrow('raised')
+    }, 150)
   }
   function winkRight(): void {
     setRightEye('open')
@@ -175,7 +195,7 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
     setRightEyebrow('down')
     setTimeout(() => {
       setRightEye('open')
-      setRightEyebrow('normal')
-    }, 200)
+      setRightEyebrow('raised')
+    }, 150)
   }
 }
