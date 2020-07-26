@@ -13,7 +13,14 @@ import {
   NeckShadow,
   Nose,
 } from './svg/body'
-import { Glasses, Hoodie, Shirt, Suit, UniversityHat } from './svg/clothing'
+import {
+  Glasses,
+  Hoodie,
+  Ninja,
+  Shirt,
+  Suit,
+  UniversityHat,
+} from './svg/clothing'
 
 interface AvatarProps {
   path: string
@@ -34,9 +41,6 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
   )
   const [mouth, setMouth] = React.useState<'open' | 'smile' | 'serious'>('open')
   const [beard, setBeard] = React.useState<'normal' | 'raised'>('raised')
-  const [cloths, setCloths] = React.useState<'welcome' | 'work' | 'education'>(
-    path === `/education` ? 'education' : path === `/work` ? 'work' : 'welcome'
-  )
 
   React.useEffect(() => {
     switch (path) {
@@ -54,157 +58,70 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
   }, [path])
 
   return (
-    <>
+    <div
+      style={{
+        height: 280,
+        margin: 'auto',
+        position: 'relative',
+        width: 240,
+      }}
+    >
       <div
         style={{
-          height: 280,
-          margin: 'auto',
-          position: 'relative',
-          width: 240,
+          borderRadius: '50%',
+          bottom: 0,
+          boxShadow:
+            '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)',
+          left: 0,
+          paddingBottom: '100%',
+          position: 'absolute',
+          width: '100%',
+          zIndex: 0,
         }}
+      />
+      <svg
+        style={{
+          left: 0,
+          position: 'absolute',
+          top: 0,
+          zIndex: 1,
+        }}
+        viewBox="0 0 240 280"
       >
-        <div
-          style={{
-            borderRadius: '50%',
-            bottom: 0,
-            boxShadow:
-              '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)',
-            left: 0,
-            paddingBottom: '100%',
-            position: 'absolute',
-            width: '100%',
-            zIndex: 0,
-          }}
-        />
-        <svg
-          style={{
-            left: 0,
-            position: 'absolute',
-            top: 0,
-            zIndex: 1,
-          }}
-          viewBox="0 0 240 280"
-        >
-          <mask fill="white" id="Mask">
-            <path d="M240,2.84217094e-14 L240,160 C240,226.27417 186.27417,280 120,280 C54.3885717,280 1.07577143,227.343314 0.0160765715,161.984419 L0,160 L0,2.84217094e-14 L240,2.84217094e-14 Z"></path>
-          </mask>
+        <mask fill="white" id="Mask">
+          <path d="M240,2.84217094e-14 L240,160 C240,226.27417 186.27417,280 120,280 C54.3885717,280 1.07577143,227.343314 0.0160765715,161.984419 L0,160 L0,2.84217094e-14 L240,2.84217094e-14 Z"></path>
+        </mask>
 
-          <g mask="url(#Mask)">
-            {/* Body */}
-            <Body left={24} top={181} />
-            <NeckShadow left={98} opacity={0.1} top={179} />
+        <g mask="url(#Mask)">
+          {/* Body */}
+          <Body left={24} top={181} />
+          <NeckShadow left={98} opacity={0.1} top={179} />
 
-            {/* Clothing */}
-            <Shirt active={cloths === 'welcome'} left={24} top={195} />
-            <Hoodie active={cloths === 'work'} left={24} top={173.5} />
-            <Suit active={cloths === 'education'} left={24} top={183.5} />
+          {/* Clothing */}
+          <Shirt active={path === '/'} left={24} top={195} />
+          <Hoodie active={path === '/work'} left={24} top={173.5} />
+          <Suit active={path === '/education'} left={24} top={183.5} />
 
-            {/* Head */}
-            <Head left={65} top={36} />
-            <Beard left={73} state={beard} top={97} />
-            <Mouth left={99} state={mouth} top={154} />
-            <Moustache left={95} opacity={1} state={beard} top={148} />
-            <Nose left={105} state={beard} top={137} />
-            <Eye left={87} state={leftEye} top={100} />
-            <Eye left={135} state={rightEye} top={100} />
-            <Eyebrow left={81} state={leftEyebrow} top={89} />
-            <Eyebrow flip left={132} state={rightEyebrow} top={89} />
+          {/* Head */}
+          <Head left={65} top={36} />
+          <Beard left={73} state={beard} top={97} />
+          <Mouth left={99} state={mouth} top={154} />
+          <Moustache left={95} opacity={1} state={beard} top={148} />
+          <Nose left={105} state={beard} top={137} />
+          <Eye left={87} state={leftEye} top={100} />
+          <Eye left={135} state={rightEye} top={100} />
+          <Eyebrow left={81} state={leftEyebrow} top={89} />
+          <Eyebrow flip left={132} state={rightEyebrow} top={89} />
 
-            {/* Gear */}
-            <Hair left={70} top={27} />
-            <Glasses active={cloths === 'work'} left={66} top={90} />
-            <Laptop active={cloths === 'work'} left={31} top={171} />
-            <UniversityHat active={cloths === 'education'} left={25} top={11} />
-          </g>
-        </svg>
-      </div>
-      <button
-        onClick={() => {
-          setLeftEye('open')
-          setRightEye('open')
-        }}
-      >
-        Open
-      </button>
-      <button
-        onClick={() => {
-          setLeftEye('pinch')
-          setRightEye('pinch')
-        }}
-      >
-        Pinch
-      </button>
-      <button onClick={winkLeft}>Wink Left</button>
-      <button onClick={winkRight}>Wink Right</button>
-      <button
-        onClick={() => {
-          setMouth('open')
-          setBeard('raised')
-          setLeftEyebrow('raised')
-          setRightEyebrow('raised')
-        }}
-      >
-        Mouth open
-      </button>
-      <button
-        onClick={() => {
-          setMouth('smile')
-          setBeard('normal')
-          setLeftEyebrow('normal')
-          setRightEyebrow('normal')
-        }}
-      >
-        Mouth smile
-      </button>
-      <button
-        onClick={() => {
-          setMouth('serious')
-          setBeard('normal')
-          setLeftEyebrow('normal')
-          setRightEyebrow('normal')
-        }}
-      >
-        Mouth serious
-      </button>
-      <button
-        onClick={() => {
-          setLeftEyebrow('normal')
-          setRightEyebrow('normal')
-        }}
-      >
-        Eybrows normal
-      </button>
-      <button
-        onClick={() => {
-          setLeftEyebrow('raised')
-          setRightEyebrow('raised')
-        }}
-      >
-        Eybrows raised
-      </button>
-      <button
-        onClick={() => {
-          setLeftEyebrow('down')
-          setRightEyebrow('down')
-        }}
-      >
-        Eybrows down
-      </button>
-      <button
-        onClick={() => {
-          setCloths('welcome')
-        }}
-      >
-        Shirt
-      </button>
-      <button
-        onClick={() => {
-          setCloths('work')
-        }}
-      >
-        Hoodie
-      </button>
-    </>
+          {/* Gear */}
+          <Hair left={70} top={27} />
+          <Glasses active={path === '/work'} left={66} top={90} />
+          <Laptop active={path === '/work'} left={31} top={171} />
+          <UniversityHat active={path === '/education'} left={25} top={11} />
+          <Ninja active={path === '/skills'} left={2} top={27} />
+        </g>
+      </svg>
+    </div>
   )
 
   function setHome(): void {
@@ -214,7 +131,6 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
     setRightEye('open')
     setBeard('raised')
     setMouth('open')
-    setCloths('welcome')
   }
 
   function setSkills(): void {
@@ -224,7 +140,6 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
     setRightEye('pinch')
     setBeard('normal')
     setMouth('serious')
-    setCloths('welcome')
   }
 
   function setWork(): void {
@@ -234,7 +149,6 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
     setRightEye('open')
     setBeard('normal')
     setMouth('smile')
-    setCloths('work')
   }
 
   function setEducation(): void {
@@ -244,7 +158,6 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
     setRightEye('open')
     setBeard('normal')
     setMouth('smile')
-    setCloths('education')
   }
 
   function winkLeft(): void {
