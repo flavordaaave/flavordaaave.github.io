@@ -29,7 +29,11 @@ export const Ninja: React.FunctionComponent<NinjaProps> = ({
 
   return (
     <g id="Ninja" transform={`translate(${left}, ${top})`}>
-      <g transform={`rotate(${active ? '0' : '-90'} 100 400)`}>
+      <g
+        transform={`rotate(${
+          active && firstUpdate.current ? '0' : '-90'
+        } 100 400)`}
+      >
         <g transform="scale(1 -1) rotate(38 570.915 76.418)">
           <path
             d="M18 5.527V213h-8L9.998 18.212C11.658 13.19 14.424 8.81 18 5.527z"

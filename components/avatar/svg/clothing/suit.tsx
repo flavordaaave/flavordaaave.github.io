@@ -29,7 +29,11 @@ export const Suit: React.FunctionComponent<SuitProps> = ({
 
   return (
     <g id="Suit" transform={`translate(${left}, ${top})`}>
-      <g transform={`rotate(${active ? '0' : '-90'} 96 200)`}>
+      <g
+        transform={`rotate(${
+          active && firstUpdate.current ? '0' : '-90'
+        } 96 200)`}
+      >
         <path
           d="M129.012 11c27.093 0 50.692 15.132 62.988 37.497-21.902 29.465-56.75 48.52-96 48.52-39.248 0-74.097-19.055-96-48.519C12.299 26.132 35.897 11 62.99 11h9.136A24.788 24.788 0 0072 13.5C72 27.031 82.969 38 96.5 38S121 27.031 121 13.5c0-.844-.043-1.678-.126-2.5h8.138z"
           fill="#E6E6E6"
