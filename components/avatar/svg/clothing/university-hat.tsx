@@ -29,7 +29,11 @@ export const UniversityHat: React.FunctionComponent<UniversityHatProps> = ({
 
   return (
     <g id="UniversityHat" transform={`translate(${left}, ${top})`}>
-      <g transform={`rotate(${active ? '0' : '-90'} 96 200)`}>
+      <g
+        transform={`rotate(${
+          active && firstUpdate.current ? '0' : '-90'
+        } 96 200)`}
+      >
         <path
           d="M95 18c28.168 0 50 9 50 50.763-11.837.799-20.504 1.544-26 2.237-5.496.693-13.496 2.693-24 6-11.233-2.919-19.233-4.919-24-6-6.005-1.362-14.671-2.107-26-2.237C45 27 66.832 18 95 18z"
           fill="#253744"
