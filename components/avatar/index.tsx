@@ -130,7 +130,7 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({ path }) => {
           <Glasses active={path === '/work'} left={66} top={90} />
           <Laptop active={path === '/work'} left={31} top={171} />
           <UniversityHat active={path === '/education'} left={25} top={11} />
-          <Ninja active={path === '/skills'} left={2} top={27} />
+          <Ninja active={path === '/skills'} left={0} top={27} />
         </g>
       </svg>
     </div>
